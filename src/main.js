@@ -17,6 +17,21 @@ const store = createStore({
         increase(state, payLoad) {
             state.counter = state.counter + payLoad.value;
         }
+    },
+    getters: {
+        finalCounter(state) {
+            return state.counter * 2;
+        },
+        normalizedCounter(_, getters) {
+            const finalValue = getters.finalCounter;
+            if (finalValue < 0) {
+                return 0;
+            } else if (finalValue > 100) {
+                return 100;
+            } else {
+                return finalValue
+            }
+        }
     }
 });
 app.use(store);
