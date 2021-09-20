@@ -23,7 +23,11 @@ export default {
     addOne() {
       // this.$store.state.counter++;
       // this.$store.commit('increment');
-      this.$store.commit({
+      // this.$store.commit({
+      //   type: 'increase',
+      //   value: 10
+      // });
+      this.$store.dispatch({
         type: 'increase',
         value: 10
       });
