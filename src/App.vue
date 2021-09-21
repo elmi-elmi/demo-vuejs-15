@@ -39,7 +39,7 @@ export default {
       //   value: 10
       // });
       this.$store.dispatch({
-        type: 'increase',
+        type: 'counter/increase',
         value: 10
       });
     }
