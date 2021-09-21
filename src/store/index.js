@@ -20,4 +20,5 @@ const store = createStore({
     getters: rootGetters
 });
 
+
 export default store;
