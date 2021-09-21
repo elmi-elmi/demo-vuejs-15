@@ -7,17 +7,21 @@ const app = createApp(App);
 const store = createStore({
     state() {
         return {
-            counter: 1
+            counter: 1,
+            isLoggedIn: false
         }
     },
     mutations: {
-
         increment(state) {
             state.counter = state.counter + 1
         },
         increase(state, payLoad) {
             state.counter = state.counter + payLoad.value;
+        },
+        setAuth(state, payload) {
+            state.isLoggedIn = payload.isAuth
         }
+
     },
     actions: {
         increment(context) {
@@ -27,10 +31,20 @@ const store = createStore({
         },
         increase(context, payLoad) {
             context.commit('increase', payLoad);
+        },
+        login(context) {
+            context.commit('setAuth', { isAuth: true })
+        },
+        logout(context) {
+            context.commit('setAuth', { isAuth: false })
+
         }
     },
 
     getters: {
+        userAuthenticated(state) {
+            return state.isLoggedIn
+        },
         finalCounter(state) {
             return state.counter;
         },
